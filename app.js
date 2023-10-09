@@ -24,10 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", function (req, res) {
     res.render("index");
 });
-app.get("/", function (req, res) {
-    res.render("principal");
-})
-app
+
 // Ruta para servir archivos estáticos
 app.use(express.static("public"));
 
@@ -62,12 +59,12 @@ app.post("/IniciarSesion", async function (req, res) {
         const { txtNombre, txtPassword } = req.body;
 
         // Consulta para verificar si el usuario existe
-        const buscarQuery = "SELECT * FROM usuario WHERE nombre_usuario = ?";
-        const buscarResult = await queryPromise(buscarQuery, [txtNombre]);
+        const buscarQuery = "SELECT * FROM usuario WHERE nombre_usuario = ? AND contrasenia = ?";
+        const buscarResult = await queryPromise(buscarQuery, [txtNombre, txtPassword]);
 
         if (buscarResult.length > 0) {
             // El usuario existe, redirigir a una página
-            res.redirect("/principal");
+            res.redirect("/paginas/principal.html");
         } else {
             // El usuario no existe, puedes redirigir a otra página o enviar un mensaje de error
             res.status(404).send("Usuario no encontrado");
@@ -78,7 +75,6 @@ app.post("/IniciarSesion", async function (req, res) {
         res.status(500).send("Ha ocurrido un error");
     }
 });
-
 
 // Función para ejecutar consultas SQL con promesas
 function queryPromise(query, values) {
