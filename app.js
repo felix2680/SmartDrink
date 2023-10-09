@@ -24,7 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", function (req, res) {
     res.render("index");
 });
-
+app.get("/", function (req, res) {
+    res.render("principal");
+})
 app
 // Ruta para servir archivos estáticos
 app.use(express.static("public"));
