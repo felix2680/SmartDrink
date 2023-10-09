@@ -25,6 +25,7 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
+app
 // Ruta para servir archivos estáticos
 app.use(express.static("public"));
 
@@ -53,6 +54,29 @@ app.post("/Registrar", async function (req, res) {
         res.status(500).send("Ha ocurrido un error");
     }
 });
+
+app.post("/IniciarSesion", async function (req, res) {
+    try {
+        const { txtNombre, txtPassword } = req.body;
+
+        // Consulta para verificar si el usuario existe
+        const buscarQuery = "SELECT * FROM usuario WHERE nombre_usuario = ?";
+        const buscarResult = await queryPromise(buscarQuery, [txtNombre]);
+
+        if (buscarResult.length > 0) {
+            // El usuario existe, redirigir a una página
+            res.redirect("/principal");
+        } else {
+            // El usuario no existe, puedes redirigir a otra página o enviar un mensaje de error
+            res.status(404).send("Usuario no encontrado");
+        }
+
+    } catch (error) {
+        console.error("Error:", error.message);
+        res.status(500).send("Ha ocurrido un error");
+    }
+});
+
 
 // Función para ejecutar consultas SQL con promesas
 function queryPromise(query, values) {
