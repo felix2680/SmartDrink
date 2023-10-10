@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/administrador.css">
+    <title>Ventanas con Botones</title>
+</head>
+
+<body>
+
+    <button onclick="mostrarVentana('Insertar')">Insertar</button>
+    <button onclick="mostrarVentana('Modificar')">Modificar</button>
+    <button onclick="mostrarVentana('Eliminar')">Eliminar</button>
+    <button onclick="mostrarVentana('Buscar')">Buscar</button>
+
+    <div id="Insertar" class="content">
+        <h2>Ventana 1</h2>
+        <p>Contenido de la Ventana 1.</p>
+    </div>
+
+    <div id="Modificar" class="content">
+        <h2>Ventana 2</h2>
+        <p>Contenido de la Ventana 2.</p>
+    </div>
+    <div id="Eliminar" class="content">
+        <h2>Ventana 3</h2>
+        <p>Contenido de la Ventana 3.</p>
+    </div>
+    <div id="Buscar" class="content">
+        <h2>Ventana 4</h2>
+        <p>Contenido de la Ventana 4.</p>
+    </div>
+    
+    <script src="../js/administrador.js"></script>
+
+</body>
+
+</html>
