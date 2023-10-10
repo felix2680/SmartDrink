@@ -18,16 +18,17 @@
     </div>
 
     <div class="form-container">
-        <form id="Insertar" class="content">
-            <h2 class = "mensaje">Insertar bebidas</h2>
-            <input type="text" placeholder="Nombre">
-            <input type="text" placeholder="Categoria">
-            <input type="text" placeholder="Estación">
-            <input type="text" placeholder="Elaboración">
-            <input type="text" placeholder="Ingredientes">
-            <input type="file">
-            <input type="text" placeholder="Región">
-            <input type="text" placeholder="Tipo">
+        <form id="Insertar" class="content" method="post">
+            <h2 class="mensaje">Insertar bebidas</h2>
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="categoria" placeholder="Categoria">
+            <input type="text" name="estacion" placeholder="Estación">
+            <input type="text" name="elaboracion" placeholder="Elaboración">
+            <input type="text" name="ingredientes" placeholder="Ingredientes">
+            <input type="file" name="imagen">
+            <input type="text" name="region" placeholder="Región">
+            <input type="text" name="tipo" placeholder="Tipo">
+            <input type="submit" name="insertar-bebida" value="Insertar Bebida">
             <!-- Contenido del formulario para la ventana de Insertar -->
         </form>
 
@@ -51,7 +52,18 @@
     </div>
 
     <script src="../js/administrador.js"></script>
-
+    <?php
+    $mensaje_alerta = "";
+    include("../BD/sql.php");
+    ?>
+    <script>
+        <?php
+        // Mostrar mensaje de alerta si es necesario
+        if (!empty($mensaje_alerta)) {
+            echo "alert('$mensaje_alerta');";
+        }
+        ?>
+    </script>
 </body>
 
 </html>

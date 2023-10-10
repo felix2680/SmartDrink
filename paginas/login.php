@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es-CO">
 
@@ -23,7 +22,7 @@
                 <button class="sign-up-btn">Iniciar Sesion</button>
             </div>
         </div>
-        <form method="post" class="formulario" >
+        <form method="post" class="formulario">
             <h2 class="create-account">Crear una cuenta</h2>
             <p class="cuenta-gratis">Crear una cuenta gratuita</p>
             <input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre usuario" autocomplete="off">
@@ -38,7 +37,7 @@
             <p class="cuenta-gratis">¿Aun no tienes cuenta?</p>
             <input type="text" id="username" name="name" placeholder="Nombre usuario" autocomplete="off">
             <input type="password" id="password" name="password" placeholder="Contraseña">
-            <input type="submit" name= "iniciar-sesion" value="Iniciar Sesión">
+            <input type="submit" name="iniciar-sesion" value="Iniciar Sesión">
         </form>
         <div class="welcome-back">
             <div class="message">
@@ -50,21 +49,21 @@
     </div>
     <script src="../js/script.js"></script>
     <?php
-        $mensaje_alerta = "";
-        include("../BD/sql.php");
+    $mensaje_alerta = "";
+    include("../BD/sql.php");
     ?>
     <script>
-    <?php
-    // Mostrar mensaje de alerta si es necesario
-    if (!empty($mensaje_alerta)) {
-        if($mensaje_alerta == "login exitoso"){
-            header("Location: principal.html");
-        }else{
-            echo "alert('$mensaje_alerta');";
-        }
+        <?php
+        // Mostrar mensaje de alerta si es necesario
+        if (!empty($mensaje_alerta)) {
+            if ($mensaje_alerta == "login exitoso") {
+                header("Location: administrador.php");
+            } else {
+                echo "alert('$mensaje_alerta');";
+            }
 
-    }
-    ?>
-</script>
+        }
+        ?>
+    </script>
 </body>
 </html>
