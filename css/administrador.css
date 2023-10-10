@@ -4,19 +4,91 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
+.content {
+  display: none;
+}
+
 body {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
   background-image: url(../img/fila-diferentes-cervezas-bar.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
+  color: #000;
+  padding: 20px;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
 
-.content {
-  display: none;
+.button-container button {
+  min-width: 150px;
+  /* Aumentamos el ancho mínimo */
+  height: 60px;
+  /* Aumentamos la altura */
+  color: #212529;
+  padding: 20px;
+  /* Aumentamos el padding */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  /* Ajustamos el radio de borde */
+  border: 2px solid #212529;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 0 10px;
+  font-size: 18px;
+  /* Aumentamos el tamaño de la fuente */
+  text-align: center;
+}
+
+.button-container button:hover {
+  background: #212529;
+  color: #fff;
+}
+  
+.form-container {
+  width: 600px;
+  padding: 3rem;
+  margin: 2rem;
+  background-color: rgb(51, 51, 51, 0.602);
+  text-align: center;
+}
+
+.form-container form {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.form-container h2 {
+  margin-bottom: 10px;
+}
+
+.mensaje {
+  padding: 2.7rem 0;
+  font-size: 1.7rem;
+}
+
+.content input {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: white thin solid;
+  text-align: center;
+  outline: none;
+  padding: .2rem;
+  font-size: .9rem;
+
 }

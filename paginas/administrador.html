@@ -10,30 +10,46 @@
 </head>
 
 <body>
-
-    <button onclick="mostrarVentana('Insertar')">Insertar</button>
-    <button onclick="mostrarVentana('Modificar')">Modificar</button>
-    <button onclick="mostrarVentana('Eliminar')">Eliminar</button>
-    <button onclick="mostrarVentana('Buscar')">Buscar</button>
-
-    <div id="Insertar" class="content">
-        <h2>Ventana 1</h2>
-        <p>Contenido de la Ventana 1.</p>
+    <div class="button-container">
+        <button onclick="mostrarVentana('Insertar')">Insertar</button>
+        <button onclick="mostrarVentana('Modificar')">Modificar</button>
+        <button onclick="mostrarVentana('Eliminar')">Eliminar</button>
+        <button onclick="mostrarVentana('Buscar')">Buscar</button>
     </div>
 
-    <div id="Modificar" class="content">
-        <h2>Ventana 2</h2>
-        <p>Contenido de la Ventana 2.</p>
+    <div class="form-container">
+        <form id="Insertar" class="content">
+            <h2 class = "mensaje">Insertar bebidas</h2>
+            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Categoria">
+            <input type="text" placeholder="Estación">
+            <input type="text" placeholder="Elaboración">
+            <input type="text" placeholder="Ingredientes">
+            <input type="file">
+            <input type="text" placeholder="Región">
+            <input type="text" placeholder="Tipo">
+            <!-- Contenido del formulario para la ventana de Insertar -->
+        </form>
+
+        <form id="Modificar" class="content">
+            <h2>Ventana 2</h2>
+            <p>Contenido de la Ventana 2.</p>
+            <!-- Contenido del formulario para la ventana de Modificar -->
+        </form>
+
+        <form id="Eliminar" class="content">
+            <h2>Ventana 3</h2>
+            <p>Contenido de la Ventana 3.</p>
+            <!-- Contenido del formulario para la ventana de Eliminar -->
+        </form>
+
+        <form id="Buscar" class="content">
+            <h2>Ventana 4</h2>
+            <p>Contenido de la Ventana 4.</p>
+            <!-- Contenido del formulario para la ventana de Buscar -->
+        </form>
     </div>
-    <div id="Eliminar" class="content">
-        <h2>Ventana 3</h2>
-        <p>Contenido de la Ventana 3.</p>
-    </div>
-    <div id="Buscar" class="content">
-        <h2>Ventana 4</h2>
-        <p>Contenido de la Ventana 4.</p>
-    </div>
-    
+
     <script src="../js/administrador.js"></script>
 
 </body>
