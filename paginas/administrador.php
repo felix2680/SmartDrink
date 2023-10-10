@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-container">
-        <form id="Insertar" class="content" method="post">
+        <form id="Insertar" class="content" method="post" enctype="multipart/form-data">
             <h2 class="mensaje">Insertar bebidas</h2>
             <input type="text" name="nombre" placeholder="Nombre">
             <input type="text" name="categoria" placeholder="Categoria">
