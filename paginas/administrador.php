@@ -33,8 +33,18 @@
         </form>
 
         <form id="Modificar" class="content">
-            <h2>Ventana 2</h2>
-            <p>Contenido de la Ventana 2.</p>
+            <h2 class="mensaje">Modificar bebidas</h2>
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="submit" name="buscar-modificar" placeholder="Buscar">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="categoria" placeholder="Categoria">
+            <input type="text" name="estacion" placeholder="Estación">
+            <input type="text" name="elaboracion" placeholder="Elaboración">
+            <input type="text" name="ingredientes" placeholder="Ingredientes">
+            <input type="file" name="imagen">
+            <input type="text" name="region" placeholder="Región">
+            <input type="text" name="tipo" placeholder="Tipo">
+            <input type="submit" name="modificar-bebida" value="Modificar Bebida">
             <!-- Contenido del formulario para la ventana de Modificar -->
         </form>
 

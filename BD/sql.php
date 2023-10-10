@@ -81,6 +81,56 @@ if (isset($_POST['insertar-bebida'])) {
         $mensaje_alerta = "Por favor completa los campos";
     }
 
+    
+
+}
+
+if (isset($_POST['buscar-modificar'])) {
+    $nombre_buscar = trim($_POST['nombre_buscar']);
+    
+    // Realiza una consulta para obtener los datos de la bebida con el nombre ingresado
+    $consulta_buscar = "SELECT * FROM bebidas WHERE nombre = '$nombre_buscar'";
+    $resultado_buscar = mysqli_query($conexion, $consulta_buscar);
+    
+    if ($resultado_buscar && mysqli_num_rows($resultado_buscar) > 0) {
+        // Si se encontraron resultados, obtén los datos y muéstralos en el formulario
+        $row = mysqli_fetch_assoc($resultado_buscar);
+        $nombre = $row['nombre'];
+        $categoria = $row['categoria'];
+        $estacion = $row['estacion'];
+        $elaboracion = $row['elaboracion'];
+        $ingredientes = $row['ingredientes'];
+        $imagen = $row['imagen'];
+        $region = $row['region'];
+        $tipo = $row['tipo'];        
+    } else {
+        // Si no se encontraron resultados, muestra un mensaje de error
+        $mensaje_alerta = "La bebida no se encontró en la base de datos.";
+    }
+}
+
+if (isset($_POST['modificar-bebida'])) {
+    // Obtén los valores del formulario
+    $nombre_original = trim($_POST['nombre_original']); // Nombre original de la bebida
+    $nombre = trim($_POST['nombre']);
+    $categoria = trim($_POST['categoria']);
+    $estacion = trim($_POST['estacion']);
+    $elaboracion = trim($_POST['elaboracion']);
+    $ingredientes = trim($_POST['ingredientes']);
+    $imagen = addcslashes(file_get_contents($_FILES['imagen']['tmp_name']), "\'\"");
+    $region = trim($_POST['region']);
+    $tipo = trim($_POST['tipo']);
+    
+    // Actualiza los datos de la bebida en la base de datos
+    $consulta_modificar = "UPDATE bebidas SET nombre='$nombre', categoria='$categoria', estacion='$estacion', elaboracion='$elaboracion', ingredientes='$ingredientes', imagen='$imagen', region='$region', tipo='$tipo' WHERE nombre='$nombre_original'";
+    
+    $resultado_modificar = mysqli_query($conexion, $consulta_modificar);
+    
+    if ($resultado_modificar) {
+        $mensaje_alerta = "La bebida se ha modificado correctamente.";
+    } else {
+        $mensaje_alerta = "Ha ocurrido un error al modificar la bebida.";
+    }
 }
 
 ?>
