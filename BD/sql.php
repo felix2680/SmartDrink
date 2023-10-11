@@ -132,5 +132,4 @@ if (isset($_POST['modificar-bebida'])) {
         $mensaje_alerta = "Ha ocurrido un error al modificar la bebida.";
     }
 }
-
 ?>
