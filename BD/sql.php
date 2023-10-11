@@ -57,9 +57,11 @@ if (isset($_POST['iniciar-sesion'])) {
 }
 
 if (isset($_POST['insertar-bebida'])) {
-    if (strlen($_POST['nombre']) > 1 && strlen($_POST['categoria']) > 1 && strlen($_POST['estacion']) > 1 && strlen($_POST['elaboracion']) > 1
-        && strlen($_POST['ingredientes']) > 1 && strlen($_POST['region']) > 1 && strlen($_POST['tipo']) > 1) {
-        
+    if (
+        strlen($_POST['nombre']) > 1 && strlen($_POST['categoria']) > 1 && strlen($_POST['estacion']) > 1 && strlen($_POST['elaboracion']) > 1
+        && strlen($_POST['ingredientes']) > 1 && strlen($_POST['region']) > 1 && strlen($_POST['tipo']) > 1
+    ) {
+
         $nombre = trim($_POST['nombre']);
         $categoria = trim($_POST['categoria']);
         $estacion = trim($_POST['estacion']);
@@ -81,7 +83,7 @@ if (isset($_POST['insertar-bebida'])) {
     } else {
         $mensaje_alerta = "Por favor completa los campos";
     }
-    $ventana ="Insertar";
+    $ventana = "Insertar";
 }
 
 if (isset($_POST['buscar-modificar'])) {
@@ -94,7 +96,7 @@ if (isset($_POST['buscar-modificar'])) {
     }
     if ($resultado_buscar) {
         $row = mysqli_fetch_assoc($resultado_buscar);
-        $id= $row['id'];
+        $id = $row['id'];
         $nombre = $row['nombre'];
         $categoria = $row['categoria'];
         $estacion = $row['estacion'];
@@ -103,7 +105,6 @@ if (isset($_POST['buscar-modificar'])) {
         //$imagen = $row['imagen'];
         $region = $row['region'];
         $tipo = $row['tipo'];
-        $mensaje_alerta = "La bebida se ha encontrado correctamente";
     } else {
         $mensaje_alerta = "No se encontró la bebida. Por favor, inténtalo de nuevo.";
     }
@@ -125,11 +126,19 @@ if (isset($_POST['modificar-bebida'])) {
         $region = trim($_POST['region']);
         $tipo = trim($_POST['tipo']);
         $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-        $consulta_modificar = "UPDATE bebidas SET categoria = '$categoria', estacion = '$estacion', elaboracion = '$elaboracion', ingredientes = '$ingredientes', region = '$region', tipo = '$tipo', imagen = '$imagen', nombre = '$nombre' WHERE id = '$id'"; 
+        $consulta_modificar = "UPDATE bebidas SET categoria = '$categoria', estacion = '$estacion', elaboracion = '$elaboracion', ingredientes = '$ingredientes', region = '$region', tipo = '$tipo', imagen = '$imagen', nombre = '$nombre' WHERE id = '$id'";
         $resultado_modificar = mysqli_query($conexion, $consulta_modificar);
 
         if ($resultado_modificar) {
             $mensaje_alerta = "La bebida se ha modificado correctamente";
+            $id = '';
+            $nombre = '';
+            $categoria = '';
+            $estacion = '';
+            $elaboracion = '';
+            $ingredientes = '';
+            $region = '';
+            $tipo = '';
         } else {
             $mensaje_alerta = "Ha ocurrido un error al modificar la bebida";
         }
