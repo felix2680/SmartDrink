@@ -10,6 +10,3 @@ function mostrarVentana(ventanaId) {
 }
 
 // Mostrar el formulario de inserción por defecto al cargar la página
-window.onload = function () {
-  mostrarVentana('Insertar');
-}
