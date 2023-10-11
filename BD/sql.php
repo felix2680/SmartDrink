@@ -69,7 +69,7 @@ if (isset($_POST['insertar-bebida'])) {
         $ingredientes = trim($_POST['ingredientes']);
         $region = trim($_POST['region']);
         $tipo = trim($_POST['tipo']);
-        $$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+        $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
 
         $consulta = "INSERT INTO bebidas( nombre, categoria, estacion, elaboracion, ingredientes, imagen, region, tipo) 
                         VALUES ('$nombre','$categoria','$estacion','$elaboracion','$ingredientes','$imagen','$region','$tipo')";
@@ -137,7 +137,6 @@ if (isset($_POST['modificar-bebida'])) {
         $imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
         $consulta_modificar = "UPDATE bebidas SET categoria = '$categoria', estacion = '$estacion', elaboracion = '$elaboracion', ingredientes = '$ingredientes', region = '$region', tipo = '$tipo', imagen = '$imagen', nombre = '$nombre' WHERE id = '$id'";
         $resultado_modificar = mysqli_query($conexion, $consulta_modificar);
-
         if ($resultado_modificar) {
             $mensaje_alerta = "La bebida se ha modificado correctamente";
             $id = '';
@@ -173,6 +172,7 @@ if (isset($_POST['eliminar-bebida'])) {
     } else {
         $mensaje_alerta = "Por favor completa los campos";
     }
+    $nombre='';
     $ventana = "Eliminar";
 }
 ?>

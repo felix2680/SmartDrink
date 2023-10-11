@@ -9,4 +9,3 @@ function mostrarVentana(ventanaId) {
   ventana.style.display = 'block';
 }
 
-// Mostrar el formulario de inserción por defecto al cargar la página

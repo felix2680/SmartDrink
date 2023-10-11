@@ -23,11 +23,11 @@
         // Mostrar mensaje de alerta si es necesario
         if (!empty($mensaje_alerta)) {
             echo "alert('$mensaje_alerta');";
-            echo "window.onload = function () {
-                    mostrarVentana('$ventana');
-                  }";
-        }
 
+        }
+        echo "window.onload = function () {
+            mostrarVentana('$ventana');
+          }";
         ?>
     </script>
 
@@ -35,7 +35,7 @@
         <button onclick="mostrarVentana('Insertar')">Insertar</button>
         <button onclick="mostrarVentana('Modificar')">Modificar</button>
         <button onclick="mostrarVentana('Eliminar')">Eliminar</button>
-        <button>cerrar sesión</button> 
+        <button>cerrar sesión</button>
         <!--<button onclick="mostrarVentana('Buscar')">Buscar</button>-->
     </div>
 
