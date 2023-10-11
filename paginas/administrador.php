@@ -35,6 +35,7 @@
         <button onclick="mostrarVentana('Insertar')">Insertar</button>
         <button onclick="mostrarVentana('Modificar')">Modificar</button>
         <button onclick="mostrarVentana('Eliminar')">Eliminar</button>
+        <button>cerrar sesión</button> 
         <!--<button onclick="mostrarVentana('Buscar')">Buscar</button>-->
     </div>
 

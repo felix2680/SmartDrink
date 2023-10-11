@@ -69,7 +69,7 @@ if (isset($_POST['insertar-bebida'])) {
         $ingredientes = trim($_POST['ingredientes']);
         $region = trim($_POST['region']);
         $tipo = trim($_POST['tipo']);
-        $$imagen = addcslashes(file_get_contents($_FILES['imagen']['tmp_name']), "\'\"");
+        $$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
 
         $consulta = "INSERT INTO bebidas( nombre, categoria, estacion, elaboracion, ingredientes, imagen, region, tipo) 
                         VALUES ('$nombre','$categoria','$estacion','$elaboracion','$ingredientes','$imagen','$region','$tipo')";
@@ -93,21 +93,30 @@ if (isset($_POST['buscar-modificar'])) {
         // Consulta para obtener los datos de la bebida
         $consulta_buscar = "SELECT * FROM bebidas WHERE nombre = '$nombre_buscar'";
         $resultado_buscar = mysqli_query($conexion, $consulta_buscar);
-    }
-    if ($resultado_buscar) {
-        $row = mysqli_fetch_assoc($resultado_buscar);
-        $id = $row['id'];
-        $nombre = $row['nombre'];
-        $categoria = $row['categoria'];
-        $estacion = $row['estacion'];
-        $elaboracion = $row['elaboracion'];
-        $ingredientes = $row['ingredientes'];
-        //$imagen = $row['imagen'];
-        $region = $row['region'];
-        $tipo = $row['tipo'];
+
+        if ($resultado_buscar) {
+            // Verificar si se encontraron resultados
+            if (mysqli_num_rows($resultado_buscar) > 0) {
+                $row = mysqli_fetch_assoc($resultado_buscar);
+                $id = $row['id'];
+                $nombre = $row['nombre'];
+                $categoria = $row['categoria'];
+                $estacion = $row['estacion'];
+                $elaboracion = $row['elaboracion'];
+                $ingredientes = $row['ingredientes'];
+                //$imagen = $row['imagen'];
+                $region = $row['region'];
+                $tipo = $row['tipo'];
+            } else {
+                $mensaje_alerta = "No se encontró la bebida. Por favor, inténtalo de nuevo.";
+            }
+        } else {
+            $mensaje_alerta = "Error en la consulta: " . mysqli_error($conexion);
+        }
     } else {
-        $mensaje_alerta = "No se encontró la bebida. Por favor, inténtalo de nuevo.";
+        $mensaje_alerta = "Por favor completa los campos";
     }
+    $ventana = "Modificar";
 }
 
 //funcion para modificar la bebida
@@ -145,6 +154,7 @@ if (isset($_POST['modificar-bebida'])) {
     } else {
         $mensaje_alerta = "Por favor completa los campos necesarios para modificar la bebida";
     }
+    $ventana = "Modificar";
 }
 
 if (isset($_POST['eliminar-bebida'])) {
