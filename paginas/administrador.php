@@ -48,10 +48,10 @@
             <!-- Contenido del formulario para la ventana de Modificar -->
         </form>
 
-        <form id="Eliminar" class="content">
-            <h2>Ventana 3</h2>
-            <p>Contenido de la Ventana 3.</p>
-            <!-- Contenido del formulario para la ventana de Eliminar -->
+        <form id="Eliminar" class="content" method="post" enctype="multipart/form-data">
+            <h2 class="mensaje">Eliminar bebidas</h2>
+            <input type="text" name="nombre_buscar" placeholder="Nombre de la bebida a eliminar">
+            <input type="submit" name="eliminar-bebida" value="Eliminar Bebida">
         </form>
 
         <form id="Buscar" class="content">

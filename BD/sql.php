@@ -132,4 +132,22 @@ if (isset($_POST['modificar-bebida'])) {
         $mensaje_alerta = "Ha ocurrido un error al modificar la bebida.";
     }
 }
+
+if (isset($_POST['eliminar-bebida'])) {
+    if (strlen($_POST['nombre_buscar']) > 1) {
+        $nombre = trim($_POST['nombre_buscar']);
+
+        // Consulta para eliminar la bebida
+        $consulta_eliminar = "DELETE FROM bebidas WHERE nombre = '$nombre'";
+        $resultado_eliminar = mysqli_query($conexion, $consulta_eliminar);
+
+        if ($resultado_eliminar) {
+            $mensaje_alerta = "La bebida se ha eliminado correctamente";
+        } else {
+            $mensaje_alerta = "No se encontró la bebida. Por favor, inténtalo de nuevo.";
+        }
+    } else {
+        $mensaje_alerta = "Por favor completa los campos";
+    }
+}
 ?>
