@@ -1,3 +1,15 @@
+<?php
+$mensaje_alerta = "";
+include("../BD/sql.php");
+
+// Redirigir si es un "login exitoso"
+if (!empty($mensaje_alerta) && $mensaje_alerta == "login exitoso") {
+    header("Location: administrador.php");
+    exit();
+}else if ($mensaje_alerta != "") {
+    echo "<script>alert('$mensaje_alerta');</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="es-CO">
 
@@ -48,22 +60,5 @@
         </div>
     </div>
     <script src="../js/script.js"></script>
-    <?php
-    $mensaje_alerta = "";
-    include("../BD/sql.php");
-    ?>
-    <script>
-        <?php
-        // Mostrar mensaje de alerta si es necesario
-        if (!empty($mensaje_alerta)) {
-            if ($mensaje_alerta == "login exitoso") {
-                header("Location: administrador.php");
-            } else {
-                echo "alert('$mensaje_alerta');";
-            }
-
-        }
-        ?>
-    </script>
 </body>
 </html>
