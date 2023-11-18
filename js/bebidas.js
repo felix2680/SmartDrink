@@ -3,6 +3,7 @@ const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
 const palanca = document.querySelector(".switch");
 const circulo = document.querySelector(".circulo");
+
 palanca.addEventListener("click",()=>{
     let body = document.body;
     body.classList.toggle("dark-mode");
