@@ -1,66 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Roboto:wght@400;700&display=swap');
-:root{
-    --color-barra-lateral: rgba(255,255,255);
 
-    --color-texto:rgb(0,0,0);
-    --color-texto-menu:rgb(134,136,144);
+:root {
+    --color-barra-lateral: rgba(255, 255, 255);
 
-    --color-menu-hover:rgb(238,238,238);
-    --color-menu-hover-texto:rgb(0,0,0);
+    --color-texto: rgb(0, 0, 0);
+    --color-texto-menu: rgb(134, 136, 144);
 
-    --color-boton:rgb(0,0,0);
-    --color-boton-texto:rgb(255,255,255);
+    --color-menu-hover: rgb(238, 238, 238);
+    --color-menu-hover-texto: rgb(0, 0, 0);
 
-    --color-linea: rgb(241,241,241);
+    --color-boton: rgb(0, 0, 0);
+    --color-boton-texto: rgb(255, 255, 255);
 
-    --color-switch-base: rgb(201,202,206);
-    --color-switch-circulo:rgb(241,241,241);
+    --color-linea: rgb(241, 241, 241);
+
+    --color-switch-base: rgb(201, 202, 206);
+    --color-switch-circulo: rgb(241, 241, 241);
 }
-.dark-mode{
-    --color-barra-lateral: rgba(44,45,49);
 
-    --color-texto:rgb(255,255,255);
-    --color-texto-menu:rgb(110,110,117);
+.dark-mode {
+    --color-barra-lateral: rgba(44, 45, 49);
 
-    --color-menu-hover:rgb(0,0,0);
-    --color-menu-hover-texto:rgb(238,238,238);
+    --color-texto: rgb(255, 255, 255);
+    --color-texto-menu: rgb(110, 110, 117);
 
-    --color-boton:rgb(255,255,255);
-    --color-boton-texto:rgb(0,0,0);
+    --color-menu-hover: rgb(0, 0, 0);
+    --color-menu-hover-texto: rgb(238, 238, 238);
 
-    --color-linea: rgb(71,70,78); 
-    
-    --color-switch-base: rgb(39,205,64);
-    --color-switch-circulo:rgb(255,255,255);
+    --color-boton: rgb(255, 255, 255);
+    --color-boton-texto: rgb(0, 0, 0);
+
+    --color-linea: rgb(71, 70, 78);
+
+    --color-switch-base: rgb(39, 205, 64);
+    --color-switch-circulo: rgb(255, 255, 255);
 }
-*{
-    margin:0;
-    padding:0;
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
 }
 
-body{
+body {
     height: 100vh;
     width: 100%;
     background-color: darkcyan;
 }
 
 
-.barra-lateral{
+.barra-lateral {
     width: 250px;
     height: 100%;
     overflow: hidden;
     padding: 20px 15px;
     background-color: var(--color-barra-lateral);
-    transition: width 0.5s ease,background-color 0.3s ease;
+    transition: width 0.5s ease, background-color 0.3s ease;
 }
-.mini-barra-lateral{
+
+.mini-barra-lateral {
     width: 80px;
 
 }
 
-.barra-lateral span{
+.barra-lateral span {
     width: 100px;
     white-space: nowrap;
     font-size: 18px;
@@ -69,12 +73,13 @@ body{
     transition: opacity 0.5s ease, width 05s ease;
 }
 
-.barra-lateral span.oculto{
+.barra-lateral span.oculto {
     opacity: 0;
     width: 0;
 }
+
 /*-------------> Nombre de la pagina*/
-.barra-lateral .nombre-pagina{
+.barra-lateral .nombre-pagina {
     width: 100%;
     height: 45px;
     color: var(--color-texto);
@@ -83,30 +88,31 @@ body{
     align-items: center;
 }
 
-.barra-lateral .nombre-pagina ion-icon{
+.barra-lateral .nombre-pagina ion-icon {
     min-width: 50px;
     font-size: 40px;
     cursor: pointer;
 }
-.barra-lateral .nombre-pagina span{
+
+.barra-lateral .nombre-pagina span {
     font-size: 25px;
     margin-left: 5px;
     opacity: 1;
     transition: 0.5s ease;
 }
 
-.barra-lateral .nombre-pagina span.oculto{
-    opacity:0;
+.barra-lateral .nombre-pagina span.oculto {
+    opacity: 0;
 }
 
 /*-------------> Barra de navegacion*/
-.barra-lateral .navegacion li{
+.barra-lateral .navegacion li {
     list-style: none;
     display: flex;
     margin-bottom: 5px;
 }
 
-.barra-lateral .navegacion a{
+.barra-lateral .navegacion a {
     width: 100%;
     height: 45px;
     display: flex;
@@ -115,31 +121,34 @@ body{
     border-radius: 10px;
     color: var(--color-texto-menu);
 }
-.barra-lateral .navegacion a:hover{
+
+.barra-lateral .navegacion a:hover {
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
 }
-.barra-lateral .navegacion ion-icon{
+
+.barra-lateral .navegacion ion-icon {
     min-width: 50px;
     font-size: 20px;
 }
 
 /*-------------> Linea*/
-.barra-lateral .linea{
+.barra-lateral .linea {
     width: 100%;
     height: 3px;
     background-color: var(--color-linea);
 }
 
 /*-------------> Modo oscuro*/
-.barra-lateral  .modo-oscuro{
+.barra-lateral .modo-oscuro {
     width: 100%;
+    margin-bottom: 650px; /*Separacion para la info del usuario*/
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
 }
 
-.barra-lateral .modo-oscuro .info{
+.barra-lateral .modo-oscuro .info {
     width: 150px;
     height: 45px;
     overflow: hidden;
@@ -148,13 +157,13 @@ body{
     color: var(--color-texto-menu);
 }
 
-.barra-lateral .modo-oscuro ion-icon{
+.barra-lateral .modo-oscuro ion-icon {
     width: 50px;
     font-size: 20px;
 }
 
 /*-------------> switch*/
-.barra-lateral .modo-oscuro .switch{
+.barra-lateral .modo-oscuro .switch {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,7 +171,8 @@ body{
     height: 45px;
     cursor: pointer;
 }
-.barra-lateral .modo-oscuro .base{
+
+.barra-lateral .modo-oscuro .base {
     position: relative;
     display: flex;
     align-items: center;
@@ -171,7 +181,8 @@ body{
     background-color: var(--color-switch-base);
     border-radius: 50px;
 }
-.barra-lateral .modo-oscuro .circulo{
+
+.barra-lateral .modo-oscuro .circulo {
     position: absolute;
     width: 18px;
     height: 90%;
@@ -180,7 +191,50 @@ body{
     left: 2px;
     transition: left 0.5s ease;
 }
-.barra-lateral .modo-oscuro .circulo.prendido{
+
+.barra-lateral .modo-oscuro .circulo.prendido {
     left: 15px;
+
+}
+
+/*-------------> Usuario*/
+.barra-lateral .usuario {
+    width: 100%;
+    display: flex;
+}
+
+.barra-lateral .usuario img {
+    width: 50px;
+    min-width: 50px;
+    border-radius: 10px;
+
+}
+
+.barra-lateral .usuario .info-usuario {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto);
+    overflow: hidden;
+}
+
+.barra-lateral .usuario .nombre-email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.barra-lateral .usuario .nombre{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.barra-lateral .usuario .email{
+    font-size: 13px;
+}
+
+.barra-lateral .usuario ion-icon{
+    font-size: 20px;
 
 }
