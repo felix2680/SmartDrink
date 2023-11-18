@@ -10,6 +10,28 @@
 
     --color-boton:rgb(0,0,0);
     --color-boton-texto:rgb(255,255,255);
+
+    --color-linea: rgb(241,241,241);
+
+    --color-switch-base: rgb(201,202,206);
+    --color-switch-circulo:rgb(241,241,241);
+}
+.dark-mode{
+    --color-barra-lateral: rgba(44,45,49);
+
+    --color-texto:rgb(255,255,255);
+    --color-texto-menu:rgb(110,110,117);
+
+    --color-menu-hover:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(238,238,238);
+
+    --color-boton:rgb(255,255,255);
+    --color-boton-texto:rgb(0,0,0);
+
+    --color-linea: rgb(71,70,78); 
+    
+    --color-switch-base: rgb(39,205,64);
+    --color-switch-circulo:rgb(255,255,255);
 }
 *{
     margin:0;
@@ -31,7 +53,7 @@ body{
     overflow: hidden;
     padding: 20px 15px;
     background-color: var(--color-barra-lateral);
-    transition: width 0.5s ease;
+    transition: width 0.5s ease,background-color 0.3s ease;
 }
 .mini-barra-lateral{
     width: 80px;
@@ -55,6 +77,7 @@ body{
 .barra-lateral .nombre-pagina{
     width: 100%;
     height: 45px;
+    color: var(--color-texto);
     margin-bottom: 40px;
     display: flex;
     align-items: center;
@@ -90,7 +113,6 @@ body{
     align-items: center;
     text-decoration: none;
     border-radius: 10px;
-    background-color: var(--color-barra-lateral);
     color: var(--color-texto-menu);
 }
 .barra-lateral .navegacion a:hover{
@@ -100,4 +122,65 @@ body{
 .barra-lateral .navegacion ion-icon{
     min-width: 50px;
     font-size: 20px;
+}
+
+/*-------------> Linea*/
+.barra-lateral .linea{
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-linea);
+}
+
+/*-------------> Modo oscuro*/
+.barra-lateral  .modo-oscuro{
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.barra-lateral .modo-oscuro .info{
+    width: 150px;
+    height: 45px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: var(--color-texto-menu);
+}
+
+.barra-lateral .modo-oscuro ion-icon{
+    width: 50px;
+    font-size: 20px;
+}
+
+/*-------------> switch*/
+.barra-lateral .modo-oscuro .switch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+.barra-lateral .modo-oscuro .base{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 20px;
+    background-color: var(--color-switch-base);
+    border-radius: 50px;
+}
+.barra-lateral .modo-oscuro .circulo{
+    position: absolute;
+    width: 18px;
+    height: 90%;
+    background-color: var(--color-switch-circulo);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+.barra-lateral .modo-oscuro .circulo.prendido{
+    left: 15px;
+
 }
