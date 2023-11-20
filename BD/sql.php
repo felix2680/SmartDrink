@@ -2,7 +2,7 @@
 
 include("conexion.php");
 
-$mensaje_alerta = "";
+$mensaje_alerta;
 $ventana = "";
 
 if (isset($_POST['registrar'])) {
@@ -46,15 +46,20 @@ if (isset($_POST['iniciar-sesion'])) {
         $existe_usuario = $row[0] > 0;
 
         if ($existe_usuario) {
-            // Redirecciona a la página principal
-            $mensaje_alerta = "login exitoso";
+            // Login exitoso, utiliza una variable booleana
+            $login_exitoso = true;
         } else {
+            // Login fallido, utiliza una variable booleana
+            $login_exitoso = false;
             $mensaje_alerta = "Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.";
         }
     } else {
-        $mensaje_alerta = "Por favor completa los campos')";
+        // Campos incompletos, utiliza una variable booleana
+        $login_exitoso = false;
+        $mensaje_alerta = "Por favor completa los campos";
     }
 }
+
 
 if (isset($_POST['insertar-bebida'])) {
     if (

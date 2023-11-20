@@ -104,18 +104,17 @@ body {
     color: #222;
 }
 
-.sign-in {
+.sign-up{
     position: absolute;
     opacity: 0;
     visibility: hidden;
 }
-
 .sign-in.active {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .sign-up.active {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
 }

@@ -1,13 +1,12 @@
 <?php
-$mensaje_alerta = "";
+$login_exitoso = false;
+$mensaje_alerta="";
 include("../BD/sql.php");
 
 // Redirigir si es un "login exitoso"
-if (!empty($mensaje_alerta) && $mensaje_alerta == "login exitoso") {
-    header("Location: administrador.php");
+if ($login_exitoso) {
+    header("Location: bebidas.html");
     exit();
-}else if ($mensaje_alerta != "") {
-    echo "<script>alert('$mensaje_alerta');</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -46,6 +45,7 @@ if (!empty($mensaje_alerta) && $mensaje_alerta == "login exitoso") {
     <div class="container-form sign-in">
         <form method="post" class="formulario">
             <h2 class="create-account">Iniciar Sesión</h2>
+            <div id="mensajeError" class="mensaje-error"><?php echo $mensaje_alerta; ?></div>
             <p class="cuenta-gratis">¿Aun no tienes cuenta?</p>
             <input type="text" id="username" name="name" placeholder="Nombre usuario" autocomplete="off">
             <input type="password" id="password" name="password" placeholder="Contraseña">
@@ -53,7 +53,7 @@ if (!empty($mensaje_alerta) && $mensaje_alerta == "login exitoso") {
         </form>
         <div class="welcome-back">
             <div class="message">
-                <h2>Bienvenido de nuevo</h2>
+                <h2>hola de nuevo</h2>
                 <p>Si aun no tienes una cuenta por favor registrese aqui</p>
                 <button class="sign-in-btn">Registrarse</button>
             </div>
@@ -61,4 +61,5 @@ if (!empty($mensaje_alerta) && $mensaje_alerta == "login exitoso") {
     </div>
     <script src="../js/script.js"></script>
 </body>
+
 </html>
