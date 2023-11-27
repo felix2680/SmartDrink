@@ -40,14 +40,21 @@ if (isset($_POST['iniciar-sesion'])) {
         $password = trim($_POST['password']);
 
         // Consulta para verificar la existencia del usuario y contraseña
-        $consulta_verificar = "SELECT COUNT(*) FROM usuario WHERE nombre_usuario = '$name' AND contrasenia = '$password'";
+        $consulta_verificar = "SELECT * FROM usuario WHERE nombre_usuario = '$name' AND contrasenia = '$password'";
         $resultado_verificar = mysqli_query($conexion, $consulta_verificar);
-        $row = mysqli_fetch_row($resultado_verificar);
-        $existe_usuario = $row[0] > 0;
+        $row = mysqli_fetch_assoc($resultado_verificar);
+        $existe_usuario = mysqli_num_rows($resultado_verificar) > 0;
 
         if ($existe_usuario) {
             // Login exitoso, utiliza una variable booleana
+            $nombre_usuario = $row['nombre_usuario'];
+            $correo_usuario = $row['correo'];
             $login_exitoso = true;
+
+            // Inicia la sesión y establece las variables de sesión
+            session_start();
+            $_SESSION['nombre_usuario'] = $nombre_usuario;
+            $_SESSION['correo_usuario'] = $correo_usuario;
         } else {
             // Login fallido, utiliza una variable booleana
             $login_exitoso = false;
@@ -177,7 +184,7 @@ if (isset($_POST['eliminar-bebida'])) {
     } else {
         $mensaje_alerta = "Por favor completa los campos";
     }
-    $nombre='';
+    $nombre = '';
     $ventana = "Eliminar";
 }
 ?>

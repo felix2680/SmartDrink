@@ -5,7 +5,7 @@ include("../BD/sql.php");
 
 // Redirigir si es un "login exitoso"
 if ($login_exitoso) {
-    header("Location: bebidas.html");
+    header("Location: bebidas.php");
     exit();
 }
 ?>
