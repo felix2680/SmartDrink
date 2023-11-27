@@ -1,3 +1,12 @@
+<?php
+include("../BD/sql.php");
+
+session_start();
+if (isset($_SESSION['nombre_usuario'])) {
+    $nombre_usuario = $_SESSION['nombre_usuario'];
+    $correo_usuario = $_SESSION['correo_usuario'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +18,6 @@
 </head>
 
 <body>
-    <?php
-    include("../BD/sql.php");
-
-    session_start();
-    if (isset($_SESSION['nombre_usuario'])) {
-        $nombre_usuario = $_SESSION['nombre_usuario'];
-        $correo_usuario = $_SESSION['correo_usuario'];
-    }
-    ?>
     <div class="barra-lateral">
         <div class="nombre-pagina">
             <ion-icon id="opc" name="grid-outline"></ion-icon>
@@ -25,12 +25,12 @@
         </div>
         <nav class="navegacion">
             <ul>
-                <!--                <li>
+                <li>
                     <a href="#">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <span>Perfil</span>
+                        <ion-icon name="beer-outline"></ion-icon>
+                        <span>Pagina principal</span>
                     </a>
-                </li>-->
+                </li>
                 <li>
                     <a href="cerrar_sesion.php">
                         <ion-icon name="close-circle-outline"></ion-icon>
@@ -65,7 +65,7 @@
                         <?php echo isset($correo_usuario) ? $correo_usuario : ''; ?>
                     </span>
                 </div>
-                <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                <a href="#"><ion-icon name="ellipsis-vertical-outline"></ion-icon></a>
             </div>
         </div>
     </div>

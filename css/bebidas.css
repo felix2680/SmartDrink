@@ -238,3 +238,14 @@ body {
     font-size: 20px;
 
 }
+
+.barra-lateral .usuario .info-usuario a {
+    text-decoration: none;
+    border-radius: 10px;
+    color: var(--color-texto-menu);
+}
+
+.barra-lateral .usuario .info-usuario a:hover {
+    background-color: var(--color-menu-hover);
+    color: var(--color-menu-hover-texto);
+}
