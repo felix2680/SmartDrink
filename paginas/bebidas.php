@@ -28,7 +28,7 @@ if (isset($_SESSION['nombre_usuario'])) {
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="menu-principal" href="#div-principal">
+                    <a id="menu-principal" href="#">
                         <ion-icon name="beer-outline"></ion-icon>
                         <span>Pagina principal</span>
                     </a>
@@ -67,7 +67,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                         <?php echo isset($correo_usuario) ? $correo_usuario : ''; ?>
                     </span>
                 </div>
-                <a id="cambiar-datos" href="#div-cambiar-datos"><ion-icon
+                <a id="cambiar-datos" href="#"><ion-icon
                         name="ellipsis-vertical-outline"></ion-icon></a>
             </div>
         </div>
@@ -102,30 +102,10 @@ if (isset($_SESSION['nombre_usuario'])) {
                 $mensaje_alerta = "Error en la consulta: " . mysqli_error($conexion);
             }
             ?>
-            <!--    <div class="card">
-                <img src="../img/jamaica.jpg">
-                <h4>Jamaica</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/Pulque.jpeg">
-                <h4>Pulque</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/tejuino.jpg">
-                <h4>Tejuino</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/kahlua.jpeg">
-                <h4>Kahlua</h4>
-                <a href="">Leer mas</a>
-            </div>
-        </div>-->
-            <div id="div-cambiar-datos">
-                <h1>aqui deber ir un formulario para cambiar datos</h1>
-            </div>
+        </div>
+        <div id="div-cambiar-datos">
+            <h1>aqui deber ir un formulario para cambiar datos</h1>
+        </div>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

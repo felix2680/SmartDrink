@@ -25,13 +25,13 @@ opc.addEventListener("click", () => {
 });
 
 menu_principal.addEventListener("click",()=>{
-    div_principal.style.display="block";
-    busqueda.style.display="block";
+    div_principal.style.display="flex";
+    busqueda.style.display="inline-flex";
     div_cambiar_datos.style.display="none";
 })
 
 cambiar_datos.addEventListener("click",()=>{
     div_principal.style.display="none";
     busqueda.style.display="none";
-    div_cambiar_datos.style.display="block";
+    div_cambiar_datos.style.display="flex";
 })
