@@ -3,26 +3,35 @@ const barraLateral = document.querySelector(".barra-lateral");
 const spans = document.querySelectorAll("span");
 const palanca = document.querySelector(".switch");
 const circulo = document.querySelector(".circulo");
-//let imagen = document.getElementById("imagenUsuario");
-/* lo que esta comentado es por si agregamos la funcionalidad
-   adelante*/
+const main = document.querySelector("main");
+const menu_principal = document.getElementById("menu-principal");
+const cambiar_datos = document.getElementById("cambiar-datos");
+const div_principal = document.getElementById("div-principal");
+const div_cambiar_datos = document.getElementById("div-cambiar-datos");
+const busqueda = document.getElementById("busqueda");
+
 palanca.addEventListener("click", () => {
     let body = document.body;
     body.classList.toggle("dark-mode");
     circulo.classList.toggle("prendido");
-
- /*   if (body.classList.contains("dark-mode")) {
-       // imagen.src = "/img/usuario darkmode.png";
-    } else {
-        imagen.src = "/img/usuario.png";
-    }*/
 });
 
 opc.addEventListener("click", () => {
     barraLateral.classList.toggle("mini-barra-lateral");
-
+    main.classList.toggle("min-main");
     spans.forEach((span) => {
         span.classList.toggle("oculto");
     });
-
 });
+
+menu_principal.addEventListener("click",()=>{
+    div_principal.style.display="block";
+    busqueda.style.display="block";
+    div_cambiar_datos.style.display="none";
+})
+
+cambiar_datos.addEventListener("click",()=>{
+    div_principal.style.display="none";
+    busqueda.style.display="none";
+    div_cambiar_datos.style.display="block";
+})

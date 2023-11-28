@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Roboto:wght@400;700&display=swap');
 
 :root {
-    --color-barra-lateral: rgba(255, 255, 255);
+    --color-barra-lateral: rgba(155, 155, 155);
 
     --color-texto: rgb(0, 0, 0);
     --color-texto-menu: rgb(134, 136, 144);
@@ -46,11 +46,12 @@
 body {
     height: 100vh;
     width: 100%;
-    background-color: darkcyan;
+    background-color: white;
 }
 
 
 .barra-lateral {
+    position: fixed;
     width: 250px;
     height: 100%;
     overflow: hidden;
@@ -142,7 +143,7 @@ body {
 /*-------------> Modo oscuro*/
 .barra-lateral .modo-oscuro {
     width: 100%;
-    margin-bottom: 650px; /*Separacion para la info del usuario*/
+    margin-bottom: 620px; /*Separacion para la info del usuario*/
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -238,7 +239,6 @@ body {
     font-size: 20px;
 
 }
-
 .barra-lateral .usuario .info-usuario a {
     text-decoration: none;
     border-radius: 10px;
@@ -248,4 +248,95 @@ body {
 .barra-lateral .usuario .info-usuario a:hover {
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
+}
+
+/*-------------> Main*/
+#menu-principal{
+    background-color: var(--color-menu-hover);
+}
+
+main{
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s ease;
+}
+
+main.min-main{
+    margin-left: 80px;
+}
+
+/*-------------> Barra de búsqueda*/
+
+.contenedor-busqueda {
+    height: 30px;
+    display: inline-flex;
+    overflow: hidden;
+    cursor: pointer;
+    padding:  10px 20px;
+    background: #fff;
+    border-radius:  30px;
+    align-items: center;
+    box-shadow:  0 10px 25px rgba(0,0,0,0.3);
+    margin-left: 40%;
+    
+}
+
+.contenedor-busqueda:hover input{
+    width: 400px;
+}
+
+.contenedor-busqueda input {
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.9s;
+    background:transparent;
+}
+
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+.Container{
+    width: 100%;
+    max-width: 1200px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: auto;
+}
+.Container .card{
+    width: 330px;
+    height: 430px;
+    border-radius: 8px;
+    box-shadow: 0 2px rgba(0,0,0,0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: all 0.25s;
+}
+
+.Container .card:hover{
+    transform: translateY(-15px);
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+}
+
+.Container .card img{
+    width: 330px;
+    height: 220px;
+}
+
+.Container .card h4{
+    font-weight: 600;
+}
+#div-cambiar-datos{
+    display: none;
 }
