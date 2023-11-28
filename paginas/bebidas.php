@@ -28,7 +28,7 @@ if (isset($_SESSION['nombre_usuario'])) {
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="menu-principal" href="#">
+                    <a id="menu-principal" href="#bebidas-principal">
                         <ion-icon name="beer-outline"></ion-icon>
                         <span>Pagina principal</span>
                     </a>
@@ -67,7 +67,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                         <?php echo isset($correo_usuario) ? $correo_usuario : ''; ?>
                     </span>
                 </div>
-                <a id="cambiar-datos" href="#"><ion-icon
+                <a id="cambiar-datos" href="#modificar-datos"><ion-icon
                         name="ellipsis-vertical-outline"></ion-icon></a>
             </div>
         </div>
@@ -77,7 +77,7 @@ if (isset($_SESSION['nombre_usuario'])) {
             <input type="text" placeholder="Buscar...">
             <span class="material-symbols-outlined">search</span>
         </div>
-        <div id="div-principal" class="Container">
+        <div id="bebidas-principal" class="Container">
             <?php
             $consulta_obtener_bebidas = "SELECT * FROM bebidas";
             $resultado_obtener_bebidas = mysqli_query($conexion, $consulta_obtener_bebidas);
@@ -103,7 +103,7 @@ if (isset($_SESSION['nombre_usuario'])) {
             }
             ?>
         </div>
-        <div id="div-cambiar-datos">
+        <div id="modificar-datos">
             <h1>aqui deber ir un formulario para cambiar datos</h1>
         </div>
     </main>

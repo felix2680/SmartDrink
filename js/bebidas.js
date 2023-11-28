@@ -6,8 +6,8 @@ const circulo = document.querySelector(".circulo");
 const main = document.querySelector("main");
 const menu_principal = document.getElementById("menu-principal");
 const cambiar_datos = document.getElementById("cambiar-datos");
-const div_principal = document.getElementById("div-principal");
-const div_cambiar_datos = document.getElementById("div-cambiar-datos");
+const div_principal = document.getElementById("bebidas-principal");
+const div_cambiar_datos = document.getElementById("modificar-datos");
 const busqueda = document.getElementById("busqueda");
 
 palanca.addEventListener("click", () => {
