@@ -59,6 +59,7 @@ body {
     transition: width 0.5s ease, background-color 0.3s ease;
 }
 
+
 /*---------------->Menu*/
 .menu {
     position: fixed;
@@ -394,7 +395,7 @@ main.min-main {
     display: none;
 }
 
-
+/*-------------------Modificar datos*/
 #modificar-datos {
     width: 70%;
     margin: 0 auto;
@@ -413,13 +414,13 @@ main.min-main {
 }
 
 label {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     font-size: 20px; /* Ajusta el tamaño de la fuente según tus necesidades */
 }
 
 #formulario-modificacion input {
     width: 100%;
-    padding: 8px;
+    padding: 15px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -429,6 +430,8 @@ label {
 
 #formulario-modificacion h1{
     margin-bottom: 100px;
+    text-align: center;
+    padding-top: 10px;
 }
 
 input[type="submit"] {

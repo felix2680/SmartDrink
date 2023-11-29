@@ -114,7 +114,7 @@ if (isset($_SESSION['nombre_usuario'])) {
         </div>
         <div id="modificar-datos">
             <form id="formulario-modificacion" method="post" enctype="multipart/form-data">
-                <h1>Formulario para cambiar datos del usuario</h1>
+                <h1>Editar perfil</h1>
 
                 <label for="nombre-usuario">Nombre de usuario:</label>
                 <input type="text" id="nombre-usuario" name="nombre-usuario" placeholder="Nuevo nombre de usuario"
