@@ -18,6 +18,7 @@ if (isset($_SESSION['nombre_usuario'])) {
     <link rel="stylesheet" href="../css/bebidas.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">    
 </head>
 
 <body>
@@ -100,7 +101,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                         echo '<h4>' . $row_bebida['nombre'] . '</h4>';
                         echo '<p class="categoria">Categoría: ' . $row_bebida['categoria'] . '</p>';
                         // Agrega otros datos de la bebida según sea necesario
-                        echo '<a href="">Leer mas</a>';
+                        echo '<a href="bebida.php?id=' . $row_bebida['id'] . '">Leer más</a>';
                         echo '</div>';
                     }
                 } else {
