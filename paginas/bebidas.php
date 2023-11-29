@@ -18,7 +18,7 @@ if (isset($_SESSION['nombre_usuario'])) {
     <link rel="stylesheet" href="../css/bebidas.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">    
+    <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">
 </head>
 
 <body>
@@ -83,8 +83,8 @@ if (isset($_SESSION['nombre_usuario'])) {
     </div>
     <main>
         <div id="busqueda" class="contenedor-busqueda">
-        <input type="text" id="buscarInput" placeholder="Buscar...">
-        <span class="material-symbols-outlined">search</span>
+            <input type="text" id="buscarInput" placeholder="Buscar...">
+            <span class="material-symbols-outlined">search</span>
         </div>
         <div id="bebidas-principal" class="Container">
             <?php
