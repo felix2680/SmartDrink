@@ -16,21 +16,22 @@ if (isset($_POST['registrar'])) {
         $resultado_verificar = mysqli_query($conexion, $consulta_verificar);
         $row = mysqli_fetch_row($resultado_verificar);
         $existe_usuario = $row[0] > 0;
-
+       
         if ($existe_usuario) {
-            $mensaje_alerta = "El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario.";
+            "El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario.";
         } else {
-            $consulta = "INSERT INTO usuario(nombre_usuario, correo, contrasenia) 
-                        VALUES ('$name','$email','$password')";
+            $consulta = "INSERT INTO usuario(tipo, nombre_usuario, correo, contrasenia) 
+                        VALUES (1,'$name','$email','$password')";
             $resultado = mysqli_query($conexion, $consulta);
             if ($resultado) {
-                $mensaje_alerta = "Te has inscrito correctamente";
+                echo "<script>alert('Te has inscrito correctamente');</script>";
             } else {
-                $mensaje_alerta = "Ha ocurrido un error";
+                echo "<script>alert('Ha ocurrido un error');</script>";
             }
         }
     } else {
         $mensaje_alerta = "Por favor completa los campos";
+        echo "<script>alert('Por favor completa los campos');</script>";
     }
 } elseif (isset($_POST['iniciar-sesion'])) {
     if (strlen($_POST['name']) > 1 && strlen($_POST['password']) > 1) {
@@ -46,6 +47,7 @@ if (isset($_POST['registrar'])) {
         if ($existe_usuario) {
             // Login exitoso, utiliza una variable booleana
             $id_usuario = $row['id'];
+            $tipo_usuario = $row['tipo'];
             $nombre_usuario = $row['nombre_usuario'];
             $correo_usuario = $row['correo'];
             $imagen_perfil = $row['foto_perfil'];

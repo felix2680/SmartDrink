@@ -1,12 +1,18 @@
 <?php
 $login_exitoso = false;
+$tipo_usuario;
 $mensaje_alerta="";
 include("../BD/sql.php");
 
 // Redirigir si es un "login exitoso"
 if ($login_exitoso) {
-    header("Location: bebidas.php");
-    exit();
+    if($tipo_usuario==1){
+        header("Location: bebidas.php");
+        exit();
+    }elseif($tipo_usuario==0){
+        header("Location: administrador.php");
+        exit();        
+    }
 }
 ?>
 <!DOCTYPE html>
