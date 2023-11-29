@@ -32,9 +32,7 @@ if (isset($_POST['registrar'])) {
     } else {
         $mensaje_alerta = "Por favor completa los campos";
     }
-}
-
-if (isset($_POST['iniciar-sesion'])) {
+} elseif (isset($_POST['iniciar-sesion'])) {
     if (strlen($_POST['name']) > 1 && strlen($_POST['password']) > 1) {
         $name = trim($_POST['name']);
         $password = trim($_POST['password']);
@@ -47,14 +45,19 @@ if (isset($_POST['iniciar-sesion'])) {
 
         if ($existe_usuario) {
             // Login exitoso, utiliza una variable booleana
+            $id_usuario = $row['id'];
             $nombre_usuario = $row['nombre_usuario'];
             $correo_usuario = $row['correo'];
+            $imagen_perfil = $row['foto_perfil'];
             $login_exitoso = true;
 
             // Inicia la sesión y establece las variables de sesión
             session_start();
+            $_SESSION['id'] = $id_usuario;
             $_SESSION['nombre_usuario'] = $nombre_usuario;
             $_SESSION['correo_usuario'] = $correo_usuario;
+            $_SESSION['foto_perfil'] = $imagen_perfil;
+
         } else {
             // Login fallido, utiliza una variable booleana
             $login_exitoso = false;
@@ -65,10 +68,7 @@ if (isset($_POST['iniciar-sesion'])) {
         $login_exitoso = false;
         $mensaje_alerta = "Por favor completa los campos";
     }
-}
-
-
-if (isset($_POST['insertar-bebida'])) {
+} elseif (isset($_POST['insertar-bebida'])) {
     if (
         strlen($_POST['nombre']) > 1 && strlen($_POST['categoria']) > 1 && strlen($_POST['estacion']) > 1 && strlen($_POST['elaboracion']) > 1
         && strlen($_POST['ingredientes']) > 1 && strlen($_POST['region']) > 1 && strlen($_POST['tipo']) > 1
@@ -96,9 +96,7 @@ if (isset($_POST['insertar-bebida'])) {
         $mensaje_alerta = "Por favor completa los campos";
     }
     $ventana = "Insertar";
-}
-
-if (isset($_POST['buscar-modificar'])) {
+} elseif (isset($_POST['buscar-modificar'])) {
     if (strlen($_POST['nombre_buscar']) > 1) {
         $nombre_buscar = trim($_POST['nombre_buscar']);
 
@@ -132,8 +130,7 @@ if (isset($_POST['buscar-modificar'])) {
 }
 
 //funcion para modificar la bebida
-
-if (isset($_POST['modificar-bebida'])) {
+elseif (isset($_POST['modificar-bebida'])) {
     if (
         strlen($_POST['nombre']) > 1 && strlen($_POST['categoria']) > 1 && strlen($_POST['estacion']) > 1 && strlen($_POST['elaboracion']) > 1
         && strlen($_POST['ingredientes']) > 1 && strlen($_POST['region']) > 1 && strlen($_POST['tipo']) > 1
@@ -166,9 +163,7 @@ if (isset($_POST['modificar-bebida'])) {
         $mensaje_alerta = "Por favor completa los campos necesarios para modificar la bebida";
     }
     $ventana = "Modificar";
-}
-
-if (isset($_POST['eliminar-bebida'])) {
+} elseif (isset($_POST['eliminar-bebida'])) {
     if (strlen($_POST['nombre_buscar']) > 1) {
         $nombre = trim($_POST['nombre_buscar']);
 
@@ -186,5 +181,32 @@ if (isset($_POST['eliminar-bebida'])) {
     }
     $nombre = '';
     $ventana = "Eliminar";
+
+} if (isset($_POST['Modificar-datos-usuario'])) {
+    if (isset($_POST['nombre-usuario'], $_POST['correo'], $_POST['nueva-contrasena'])) {
+        $nuevo_nombre_usuario = trim($_POST['nombre-usuario']);
+        $nuevo_correo = trim($_POST['correo']);
+        $nueva_contrasena = trim($_POST['nueva-contrasena']);
+
+        // Accede a los datos de la sesión
+        $id_usuario = $_SESSION['id'];
+
+        // Actualizamos los datos en la base de datos
+        $consulta_modificar_datos = "UPDATE usuario SET nombre_usuario = '$nuevo_nombre_usuario', correo = '$nuevo_correo', 
+            contrasenia = '$nueva_contrasena' WHERE id = '$id_usuario'";
+        $resultado = mysqli_query($conexion, $consulta_modificar_datos);
+
+        if ($resultado) {
+            $_SESSION['nombre_usuario'] = $nuevo_nombre_usuario;
+            $_SESSION['correo_usuario'] = $nuevo_correo;
+
+            echo "<script>alert('Tus datos se han modificado correctamente');</script>";
+        } else {
+            echo "<script>alert('Ha ocurrido un error');</script>";
+        }
+
+    } else {
+        echo "<script>alert('Por favor, completa todos los campos para modificar tus datos');</script>";
+    }
 }
 ?>

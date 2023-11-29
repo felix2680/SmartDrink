@@ -1,7 +1,7 @@
 <?php
+session_start();
 include("../BD/sql.php");
 
-session_start();
 if (isset($_SESSION['nombre_usuario'])) {
     $nombre_usuario = $_SESSION['nombre_usuario'];
     $correo_usuario = $_SESSION['correo_usuario'];
@@ -14,6 +14,7 @@ if (isset($_SESSION['nombre_usuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bebidas</title>
+
     <link rel="stylesheet" href="../css/bebidas.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -63,7 +64,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                 </div>
             </div>
             <div class="usuario">
-                <img id="imagenUsuario" src=" ../img/usuario x.jpg" alt="">
+                <img id="imagenUsuario" src="../img/usuario x.jpg" alt="">
                 <div class="info-usuario">
                     <div class="nombre-email">
                         <span class="nombre">
@@ -81,8 +82,8 @@ if (isset($_SESSION['nombre_usuario'])) {
     </div>
     <main>
         <div id="busqueda" class="contenedor-busqueda">
-            <input type="text" placeholder="Buscar...">
-            <span class="material-symbols-outlined">search</span>
+        <input type="text" id="buscarInput" placeholder="Buscar...">
+        <span class="material-symbols-outlined">search</span>
         </div>
         <div id="bebidas-principal" class="Container">
             <?php
@@ -97,7 +98,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                         echo '<div class="card">';
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($row_bebida['imagen']) . '" alt="' . $row_bebida['nombre'] . '">';
                         echo '<h4>' . $row_bebida['nombre'] . '</h4>';
-                        echo '<p>Categoría: ' . $row_bebida['categoria'] . '</p>';
+                        echo '<p class="categoria">Categoría: ' . $row_bebida['categoria'] . '</p>';
                         // Agrega otros datos de la bebida según sea necesario
                         echo '<a href="">Leer mas</a>';
                         echo '</div>';
@@ -112,6 +113,8 @@ if (isset($_SESSION['nombre_usuario'])) {
         </div>
         <div id="modificar-datos">
             <form id="formulario-modificacion" method="post" enctype="multipart/form-data">
+                <h1>Formulario para cambiar datos del usuario</h1>
+
                 <label for="nombre-usuario">Nombre de usuario:</label>
                 <input type="text" id="nombre-usuario" name="nombre-usuario" placeholder="Nuevo nombre de usuario"
                     required>
@@ -122,23 +125,31 @@ if (isset($_SESSION['nombre_usuario'])) {
                 <label for="nueva-contrasena">Nueva contraseña:</label>
                 <input type="password" id="nueva-contrasena" name="nueva-contrasena" placeholder="Nueva contraseña"
                     required>
-                <label for="foto-perfil">Foto de perfil:</label>
-                <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
-
-                <!-- Espacio predefinido para la visualización de la imagen -->
-                <div id="imagen-preview-container">
-                    <img id="imagen-preview" alt="Vista previa de la imagen">
-                    <ion-icon id="icono-imagen" name="image-outline"></ion-icon>
-                </div>
-                <input type="submit" value="Modificar">
+                <input name="Modificar-datos-usuario" type="submit" value="Modificar">
             </form>
         </div>
 
     </main>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/bebidas.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Código JavaScript para la búsqueda dinámica
+            $('#buscarInput').on('input', function () {
+                var busqueda = $(this).val().toLowerCase();
+
+                $('.card').each(function () {
+                    var categoriaBebida = $(this).find('.categoria').text().toLowerCase();
+                    var nombreBebida = $(this).find('h4').text().toLowerCase();
+
+                    // Muestra u oculta la tarjeta según la coincidencia en categoría o nombre
+                    $(this).toggle(categoriaBebida.includes(busqueda) || nombreBebida.includes(busqueda));
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

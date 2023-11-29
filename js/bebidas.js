@@ -59,24 +59,3 @@ document.getElementById('foto-perfil').addEventListener('change', function (even
         imagenPreview.style.display = 'none';
     }
 });
-
-document.getElementById('formulario-modificacion').addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita la recarga de la página
-
-    //var formulario = event.target;
-    //var datos = new FormData(formulario);
-
-    /*// Configura la solicitud fetch
-    fetch('tupagina.php', {
-        method: 'POST',
-        body: datos
-    })
-        .then(response => response.json()) // Si esperas una respuesta en formato JSON
-        .then(data => {
-            console.log('Respuesta del servidor:', data);
-            // Aquí puedes manejar la respuesta del servidor si es necesario
-        })
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-        });*/
-});

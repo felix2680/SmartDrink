@@ -47,6 +47,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Outfit', sans-serif;
+
 }
 
 body {
@@ -423,6 +424,10 @@ label {
     font-size: 15px; /* Ajusta el tamaño de la fuente según tus necesidades */
 }
 
+#formulario-modificacion h1{
+    margin-bottom: 100px;
+}
+
 input[type="submit"] {
     width: auto;
     /* Opcional: Restaurar el ancho automático para el botón de enviar */
@@ -434,35 +439,6 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
-}
-
-/* Estilo para el campo de carga de archivos */
-input[type="file"] {
-    margin-top: 8px;
-    font-size: 30px; /* Ajusta el tamaño de la fuente según tus necesidades */
-}
-
-#imagen-preview-container {
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-
-}
-
-#imagen-preview {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    display: none;
-}
-
-#icono-imagen {
-    font-size: 100px;
-    display: block;
 }
 
 /*------------> Responsive*/
