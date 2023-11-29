@@ -17,18 +17,24 @@ if (isset($_SESSION['nombre_usuario'])) {
     <link rel="stylesheet" href="../css/bebidas.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">    
 </head>
 
 <body>
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+    </div>
     <div class="barra-lateral">
-        <div class="nombre-pagina">
-            <ion-icon id="opc" name="grid-outline"></ion-icon>
-            <span>SmartDrink</span>
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="opc" name="grid-outline"></ion-icon>
+                <span>SmartDrink</span>
+            </div>
         </div>
         <nav class="navegacion">
             <ul>
                 <li>
-                    <a id="menu-principal" href="#div-principal">
+                    <a id="menu-principal" href="#bebidas-principal">
                         <ion-icon name="beer-outline"></ion-icon>
                         <span>Pagina principal</span>
                     </a>
@@ -41,34 +47,36 @@ if (isset($_SESSION['nombre_usuario'])) {
                 </li>
             </ul>
         </nav>
-        <div class="linea"></div>
+        <div>
+            <div class="linea"></div>
 
-        <div class="modo-oscuro">
-            <div class="info">
-                <ion-icon name="moon-outline"></ion-icon>
-                <span>Dark mode</span>
-            </div>
-            <div class="switch">
-                <div class="base">
-                    <div class="circulo">
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Dark mode</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="usuario">
-            <img id="imagenUsuario" src=" ../img/usuario x.jpg" alt="">
-            <div class="info-usuario">
-                <div class="nombre-email">
-                    <span class="nombre">
-                        <?php echo isset($nombre_usuario) ? $nombre_usuario : ''; ?>
-                    </span>
-                    <span class="email">
-                        <?php echo isset($correo_usuario) ? $correo_usuario : ''; ?>
-                    </span>
+            <div class="usuario">
+                <img id="imagenUsuario" src=" ../img/usuario x.jpg" alt="">
+                <div class="info-usuario">
+                    <div class="nombre-email">
+                        <span class="nombre">
+                            <?php echo isset($nombre_usuario) ? $nombre_usuario : ''; ?>
+                        </span>
+                        <span class="email">
+                            <?php echo isset($correo_usuario) ? $correo_usuario : ''; ?>
+                        </span>
+                    </div>
+                    <a id="cambiar-datos" href="#modificar-datos"><ion-icon
+                            name="ellipsis-vertical-outline"></ion-icon></a>
                 </div>
-                <a id="cambiar-datos" href="#div-cambiar-datos"><ion-icon
-                        name="ellipsis-vertical-outline"></ion-icon></a>
             </div>
         </div>
     </div>
@@ -77,7 +85,7 @@ if (isset($_SESSION['nombre_usuario'])) {
             <input type="text" placeholder="Buscar...">
             <span class="material-symbols-outlined">search</span>
         </div>
-        <div id="div-principal" class="Container">
+        <div id="bebidas-principal" class="Container">
             <?php
             $consulta_obtener_bebidas = "SELECT * FROM bebidas";
             $resultado_obtener_bebidas = mysqli_query($conexion, $consulta_obtener_bebidas);
@@ -92,7 +100,7 @@ if (isset($_SESSION['nombre_usuario'])) {
                         echo '<h4>' . $row_bebida['nombre'] . '</h4>';
                         echo '<p>Categoría: ' . $row_bebida['categoria'] . '</p>';
                         // Agrega otros datos de la bebida según sea necesario
-                        echo '<a href="">Leer mas</a>';
+                        echo '<a href="bebida.php?id=' . $row_bebida['id'] . '">Leer más</a>';
                         echo '</div>';
                     }
                 } else {
@@ -102,30 +110,31 @@ if (isset($_SESSION['nombre_usuario'])) {
                 $mensaje_alerta = "Error en la consulta: " . mysqli_error($conexion);
             }
             ?>
-            <!--    <div class="card">
-                <img src="../img/jamaica.jpg">
-                <h4>Jamaica</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/Pulque.jpeg">
-                <h4>Pulque</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/tejuino.jpg">
-                <h4>Tejuino</h4>
-                <a href="">Leer mas</a>
-            </div>
-            <div class="card">
-                <img src="../img/kahlua.jpeg">
-                <h4>Kahlua</h4>
-                <a href="">Leer mas</a>
-            </div>
-        </div>-->
-            <div id="div-cambiar-datos">
-                <h1>aqui deber ir un formulario para cambiar datos</h1>
-            </div>
+        </div>
+        <div id="modificar-datos">
+            <form id="formulario-modificacion" method="post" enctype="multipart/form-data">
+                <label for="nombre-usuario">Nombre de usuario:</label>
+                <input type="text" id="nombre-usuario" name="nombre-usuario" placeholder="Nuevo nombre de usuario"
+                    required>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" placeholder="Nuevo correo electrónico" required>
+
+                <label for="nueva-contrasena">Nueva contraseña:</label>
+                <input type="password" id="nueva-contrasena" name="nueva-contrasena" placeholder="Nueva contraseña"
+                    required>
+                <label for="foto-perfil">Foto de perfil:</label>
+                <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
+
+                <!-- Espacio predefinido para la visualización de la imagen -->
+                <div id="imagen-preview-container">
+                    <img id="imagen-preview" alt="Vista previa de la imagen">
+                    <ion-icon id="icono-imagen" name="image-outline"></ion-icon>
+                </div>
+                <input type="submit" value="Modificar">
+            </form>
+        </div>
+
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
