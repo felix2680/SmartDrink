@@ -9,7 +9,11 @@ const cambiar_datos = document.getElementById("cambiar-datos");
 const div_principal = document.getElementById("bebidas-principal");
 const div_cambiar_datos = document.getElementById("modificar-datos");
 const busqueda = document.getElementById("busqueda");
+const menu = document.querySelector(".menu");
 
+menu.addEventListener("click", () => {
+    barraLateral.classList.toggle("max-barra-lateral")
+})
 palanca.addEventListener("click", () => {
     let body = document.body;
     body.classList.toggle("dark-mode");
@@ -24,14 +28,55 @@ opc.addEventListener("click", () => {
     });
 });
 
-menu_principal.addEventListener("click",()=>{
-    div_principal.style.display="flex";
-    busqueda.style.display="inline-flex";
-    div_cambiar_datos.style.display="none";
+menu_principal.addEventListener("click", () => {
+    div_principal.style.display = "flex";
+    busqueda.style.display = "inline-flex";
+    div_cambiar_datos.style.display = "none";
 })
 
-cambiar_datos.addEventListener("click",()=>{
-    div_principal.style.display="none";
-    busqueda.style.display="none";
-    div_cambiar_datos.style.display="flex";
+cambiar_datos.addEventListener("click", () => {
+    div_principal.style.display = "none";
+    busqueda.style.display = "none";
+    div_cambiar_datos.style.display = "flex";
 })
+
+document.getElementById('foto-perfil').addEventListener('change', function (event) {
+    var imagenPreview = document.getElementById('imagen-preview');
+    var iconoImagen = document.getElementById('icono-imagen');
+    var archivo = event.target.files[0];
+
+    if (archivo) {
+        var lector = new FileReader();
+        lector.onload = function (e) {
+            imagenPreview.src = e.target.result;
+            iconoImagen.style.display = 'none';
+            imagenPreview.style.display = 'block';
+        };
+        lector.readAsDataURL(archivo);
+    } else {
+        imagenPreview.src = '';
+        iconoImagen.style.display = 'block';
+        imagenPreview.style.display = 'none';
+    }
+});
+
+document.getElementById('formulario-modificacion').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evita la recarga de la página
+
+    //var formulario = event.target;
+    //var datos = new FormData(formulario);
+
+    /*// Configura la solicitud fetch
+    fetch('tupagina.php', {
+        method: 'POST',
+        body: datos
+    })
+        .then(response => response.json()) // Si esperas una respuesta en formato JSON
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+            // Aquí puedes manejar la respuesta del servidor si es necesario
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });*/
+});
